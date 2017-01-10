@@ -1,34 +1,41 @@
 #include <iostream>
 #include <iomanip>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
-int main()
-{
-  string str;
-  cout<<"Enter the string :";
-  
-  cin>>str;
+class Solution {
+public:
+  bool isUnique(string input) {
+    int len = input.size();
+    if (len == 0) return true; //assuming unique is true for an empty string. Ask for clarification.
+    unordered_map<char, int> dict;
 
-  int z=0;
-  bool b1[128]; 
-
-  for(int i=0;i< (str.size());i++)
-  {
-    int  ch=(int) str[i];
-    if( b1[ch] )
-      {
-        z=100;
-        break;
+    for(int i = 0; i < len; i++) {
+      if(dict.find(input[i]) != dict.end()) {
+        return false;
       }
-    b1[ch]=true;
-  }
-  
-  if (z==100)
-    cout<<"NO";
-  else if( z==0 )
-    cout<<"YES";
-  cout>>endl;
+      dict[input[i]]++;
+    }
 
+    return true;
+  }
+
+  bool isUniqueWithoutMap(string input) {
+    int len = input.size();
+    sort(input.begin(), input.end()); //if altering the string is allowed. No prob here as it is being passed by value
+                                      //runs for empty string as well
+    for(int i = 1; i < len; i++) {
+      if(input[i] == input[i - 1]) return false;
+    }
+    return true;
+  }
+};
+
+int main() {
+  string input;
+  Solution sol;
+  cout << "Enter the string input: ";
+  cin >> input;
+  cout << sol.isUniqueWithoutMap(input)<<endl;
   return 0;
 }
