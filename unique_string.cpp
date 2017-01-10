@@ -14,7 +14,8 @@ public:
       if(dict.find(input[i]) != dict.end()) {
         return false;
       }
-      dict[input[i]]++;
+      dict[input[i]]++;  //this works
+      //cout<<input[i]<<" : "<<dict[input[i]]<<endl;
     }
 
     return true;
@@ -36,6 +37,6 @@ int main() {
   Solution sol;
   cout << "Enter the string input: ";
   cin >> input;
-  cout << sol.isUniqueWithoutMap(input)<<endl;
+  cout << sol.isUnique(input)<<endl;
   return 0;
 }
