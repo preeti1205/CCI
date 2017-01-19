@@ -63,9 +63,11 @@ int main() {
     cin >> num;
     input.push_back(num);
   }
+  /*
   TreeNode* root = sol.makeTree(input, 0, n - 1);
   root->parent = NULL;
   TreeNode* successor = sol.findSuccessor(root->left);
   cout << successor->val << endl;
+  */
   return 0;
 }
