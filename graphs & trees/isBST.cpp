@@ -15,7 +15,15 @@ struct ListNode{
 
 class Solution {
 public:
-  isBST(ListNode* root) {
+  bool isBST(ListNode* root) {
+    if (root == NULL) return true;
+    int left_val = root->left->val;
+    int right_val = root->right->val;
+    int root_val = root->val;
+    if ( (left_val > root_val) || (root_val > right_val)) return false;
+    bool isLeft = isBST(root->left);
+    bool isRight = isBST(root->right);
 
+    return (isLeft && isRight);
   }
 };
