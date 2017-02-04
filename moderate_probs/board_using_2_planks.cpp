@@ -9,7 +9,7 @@ using exactly k planks
 #include <iomanip>
 using namespace std;
 
-Class Solution{
+class Solution{
 public:
 	// backtracking - O(2^k) 
 	void planks(int sum, int count, int shorter, int longer, set<int> &result) {
